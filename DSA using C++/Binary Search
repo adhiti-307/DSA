@@ -1,0 +1,47 @@
+#include <iostream>
+#include <vector>
+#include <algorithm>
+#include <sstream>
+using namespace std;
+
+int main(){
+    string line;
+    getline(cin,line);
+    stringstream ss(line);
+    vector<int> array;
+    int x;
+
+    while(ss>>x){
+        array.push_back(x);
+    }
+
+    int key;
+    cin>>key;
+
+    sort(array.begin(), array.end());
+
+    int low=0, high= array.size()-1, mid;
+    while(low<=high){
+        mid=(low+high)/2;
+        if(array[mid]==key){
+            cout<<"Found"<<endl;
+            return 0;
+        }else if(array[mid]<key){
+            low=mid+1;
+        }else{
+            high=mid-1;
+        }
+    }
+    cout<<"Not Found"<<endl;
+    return 0;
+}
+
+/*
+-------USING STL-------
+sort(arr.begin(), arr.end());   
+if(binary_search(array.begin(), array.end(), key)){
+    cout << "Found";
+} else {
+    cout << "Not Found";
+}
+*/
