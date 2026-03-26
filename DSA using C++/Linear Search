@@ -1,0 +1,42 @@
+#include <iostream>
+#include <vector>
+#include <string>
+#include <sstream>
+using namespace std;
+
+int main(){
+    string line;
+    getline(cin,line);
+    stringstream ss(line);
+
+    vector<int> array;
+    int x;
+
+    while(ss >> x){
+        array.push_back(x);
+    }
+
+    int key;
+    cin >> key;
+
+    for (int &x : array){
+        if(key==x){
+            cout<<"Present"<<endl;
+            return 0;
+        }
+    }
+    cout<<"Not Present"<<endl;
+    return 0;
+}
+
+
+/*
+-------USING STL-------
+for(int x:array){
+    if(find(array.begin(),array.end(),key)!=array.end()){
+        cout<<"Present"<<endl;
+    }else{
+        cout<<"Not Present"<<endl;
+    }
+}
+*/
