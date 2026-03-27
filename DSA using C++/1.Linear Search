@@ -40,3 +40,6 @@ for(int x:array){
     }
 }
 */
+
+// Time Complexity : O(n)
+// Space Complexity : O(1)
