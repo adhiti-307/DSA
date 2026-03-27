@@ -1,1 +1,49 @@
+#include <iostream>
+#include <vector>
+using namespace std;
 
+void radixSort(vector<int>& arr){
+    int maxVal = 0;
+
+    // Find max element
+    for(int x : arr){
+        if(x > maxVal) maxVal = x;
+    }
+
+    // Do sorting for every digit
+    for(int exp = 1; maxVal / exp > 0; exp *= 10){
+        
+        vector<vector<int>> bucket(10);
+
+        // Place elements into buckets
+        for(int i = 0; i < arr.size(); i++){
+            int digit = (arr[i] / exp) % 10;
+            bucket[digit].push_back(arr[i]);
+        }
+
+        // Collect back into array
+        int index = 0;
+        for(int i = 0; i < 10; i++){
+            for(int num : bucket[i]){
+                arr[index++] = num;
+            }
+        }
+    }
+}
+
+int main(){
+    vector<int> arr = {170, 45, 75, 90, 802, 24, 2, 66};
+
+    radixSort(arr);
+
+    for(int x : arr){
+        cout << x << " ";
+    }
+
+    return 0;
+}
+
+// Time Complexity : O(n*d) 
+//                   n = number of elements
+//                   d = number of digits in the largest number
+// Space Complexity : O(n)
