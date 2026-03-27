@@ -45,3 +45,6 @@ if(binary_search(array.begin(), array.end(), key)){
     cout << "Not Found";
 }
 */
+
+// Time Complexity : O(log n)
+// Space Complexity : O(1)
