@@ -1,1 +1,51 @@
+#include <iostream>
+#include <sstream>
+#include <vector>
+#include <algorithm>
+using namespace std;
 
+void count_sort(vector<int> &arr){
+    int n = arr.size()-1;
+    
+    int max_val = *max_element(arr.begin(),arr.end());
+
+    vector<int> count(max_val+1, 0);
+
+    for(int x : arr){
+        count[x]++;
+    }
+
+    int index = 0;
+    for(int i=0; i<=max_val; i++){
+        while(count[i]>0){
+            arr[index++] = i;
+            count[i]--;
+        }
+    }
+}
+
+void print_arr(vector<int> arr){
+    for(int x: arr){
+        cout<<x<<" ";
+    }
+    cout<<endl;
+}
+
+int main(){
+    string line;
+    getline(cin,line);
+    stringstream ss(line);
+    vector<int> arr;
+    int x;
+    while(ss>>x){
+        arr.push_back(x);
+    }
+    count_sort(arr);
+    print_arr(arr);
+    return 0;
+}
+
+// Time Complexity : O(n+k)  
+//                   n = number of elements
+//                   k = range of values (max element + 1)
+// Space Complexity : O(n+k)
