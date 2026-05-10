@@ -12,7 +12,7 @@ Return the total number of distinct ways to reach the `Nth` stair.
 
 Since the answer can be very large, return it modulo:
 
-:contentReference[oaicite:0]{index=0}
+`1000000007`
 
 ---
 
@@ -59,7 +59,7 @@ To reach stair `n`:
 
 Therefore:
 
-:contentReference[oaicite:1]{index=1}
+`ways(n) = ways(n-1) + ways(n-2)`
 
 This is exactly similar to the Fibonacci pattern.
 
