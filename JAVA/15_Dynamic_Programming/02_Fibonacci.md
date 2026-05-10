@@ -8,7 +8,7 @@ In Fibonacci:
 
 For every other number:
 
-:contentReference[oaicite:0]{index=0}
+`F(n) = F(n-1) + F(n-2)`
 
 ---
 
