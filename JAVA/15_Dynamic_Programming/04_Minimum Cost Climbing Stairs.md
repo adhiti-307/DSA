@@ -83,11 +83,11 @@ cost[i]
 
 Therefore:
 
-:contentReference[oaicite:0]{index=0}
+`dp(i) = cost[i] + min(dp(i-1), dp(i-2))`
 
 The answer will be:
 
-:contentReference[oaicite:1]{index=1}
+`min(dp(n-1), dp(n-2))`
 
 because from the last or second last stair we can directly reach the top.
 
@@ -125,10 +125,7 @@ public class MinCostClimbingStairsRecursion {
         if (n == 1)
             return cost[1];
 
-        return cost[n] + Math.min(
-                solve(cost, n - 1),
-                solve(cost, n - 2)
-        );
+        return cost[n] + Math.min(solve(cost, n - 1), solve(cost, n - 2));
     }
 
     public static void main(String[] args) {
@@ -137,10 +134,7 @@ public class MinCostClimbingStairsRecursion {
 
         int n = cost.length;
 
-        int ans = Math.min(
-                solve(cost, n - 1),
-                solve(cost, n - 2)
-        );
+        int ans = Math.min(solve(cost, n - 1), solve(cost, n - 2));
 
         System.out.println(ans);
     }
@@ -222,10 +216,7 @@ public class MinCostClimbingStairsMemoization {
             return dp[n];
 
         // Step 2: Store and return
-        dp[n] = cost[n] + Math.min(
-                solve(cost, n - 1, dp),
-                solve(cost, n - 2, dp)
-        );
+        dp[n] = cost[n] + Math.min(solve(cost, n - 1, dp), solve(cost, n - 2, dp));
 
         return dp[n];
     }
@@ -240,10 +231,7 @@ public class MinCostClimbingStairsMemoization {
 
         Arrays.fill(dp, -1);
 
-        int ans = Math.min(
-                solve(cost, n - 1, dp),
-                solve(cost, n - 2, dp)
-        );
+        int ans = Math.min(solve(cost, n - 1, dp), solve(cost, n - 2, dp));
 
         System.out.println(ans);
     }
@@ -329,16 +317,10 @@ public class MinCostClimbingStairsTabulation {
         // Build DP Table
         for (int i = 2; i < n; i++) {
 
-            dp[i] = cost[i] + Math.min(
-                    dp[i - 1],
-                    dp[i - 2]
-            );
+            dp[i] = cost[i] + Math.min( dp[i - 1], dp[i - 2] );
         }
 
-        int ans = Math.min(
-                dp[n - 1],
-                dp[n - 2]
-        );
+        int ans = Math.min( dp[n - 1], dp[n - 2] );
 
         System.out.println(ans);
     }
@@ -485,7 +467,7 @@ best among previous choices
 
 Pattern:
 
-:contentReference[oaicite:2]{index=2}
+`dp(i) = cost[i] + min(dp(i-1), dp(i-2))`
 
 This pattern appears in many:
 - minimum path
